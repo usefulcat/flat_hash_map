@@ -288,6 +288,7 @@ struct HashPolicySelector<T, void_t<typename T::hash_policy>>
 template<typename T, typename FindKey, typename ArgumentHash, typename Hasher, typename ArgumentEqual, typename Equal, typename ArgumentAlloc, typename EntryAlloc>
 class sherwood_v3_table : private EntryAlloc, private Hasher, private Equal
 {
+private:
     using Entry = detailv3::sherwood_v3_entry<T>;
     using AllocatorTraits = std::allocator_traits<EntryAlloc>;
     using EntryPointer = typename AllocatorTraits::pointer;
