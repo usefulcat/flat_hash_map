@@ -801,7 +801,7 @@ private:
     size_t num_slots_minus_one = 0;
     typename HashPolicySelector<ArgumentHash>::type hash_policy;
     int8_t max_lookups = detailv3::min_lookups - 1;
-    float _max_load_factor = 0.5f;
+    float _max_load_factor = 0.8f;
     size_t num_elements = 0;
 
     static int8_t compute_max_lookups(size_t num_buckets)
