@@ -263,7 +263,16 @@ inline size_t next_power_of_two(size_t i)
     return i;
 }
 
-template<typename...> using void_t = void;
+#if defined(__GNUC__) and __GNUC__ < 5
+    // https://stackoverflow.com/questions/53469491/stdhash-no-type-named-hash-policy-when-running-skaflat-hash-map
+    template <typename...>
+    struct voider { using type = void; };
+
+    template <typename... Ts>
+    using void_t = typename voider<Ts...>::type;
+#else
+    template<typename...> using void_t = void;
+#endif
 
 template<typename T, typename = void>
 struct HashPolicySelector
